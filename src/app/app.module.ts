@@ -5,23 +5,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
-import { WeatherComponent } from './weather/weather.component';
-import { PollutionComponent } from './pollution/pollution.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ProgressModule } from './progress/progress.module';
+import { WeatherModule } from './weather/weather.module';
+import { PollutionModule } from './pollution/pollution.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WeatherComponent,
-    PollutionComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    WeatherModule,
+    PollutionModule,
+    ProgressModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    // AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

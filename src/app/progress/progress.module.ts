@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PollutionComponent } from './pollution.component';
+import { ProgressComponent } from './progress.component';
 import { SharedModule } from '../shared/shared.module';
-import { PollutionRoutingModule } from './pollution-routing.module';
+import { ProgressRoutingModule } from './progress-routing.module';
 
 
 
 @NgModule({
   declarations: [
-    PollutionComponent
+    ProgressComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
-    PollutionRoutingModule
+    ProgressRoutingModule
   ],
   exports: [
-    PollutionComponent
+    ProgressComponent
   ]
 })
-export class PollutionModule { }
+export class ProgressModule { }
