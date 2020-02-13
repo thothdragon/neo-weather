@@ -52,35 +52,35 @@ npm start
 *  :rocket: Run on device
 > You must install Java JDK 8, android studio and accept license
  [@see prerequist](https://ionicframework.com/docs/installation/android)
-:danger: Install cordova
+ :warning: Install cordova
 ```bash
 npm install cordova --save-dev
 ```
-:danger: Install native-run
+ :warning: Install native-run
 ```bash
 npm install native-run
 ```
-:danger: Prepare android
+ :warning: Prepare android
 ```bash
 npm run ionic cordova prepare android
 ```
-:danger: Customize *config.xml*
+ :warning: Customize *config.xml*
 ```xml
 <widget id="io.cyril.weather" ...>
     <name>Weather</name>
     <description>An awesome Weather app</description>
     <author email="cyril@cyril.com" href="http://cyril.com/">Cyril</author>
 ```
-:danger: Customize *package.json*
+ :warning: Customize *package.json*
 ```json
   "author": "cyril",
   "description": "An awesome Weather app"
 ```
-:coche_trait_plein: Run on device
+ :white_check_mark: Run on device
 ```bash
 npm run ionic cordova run android --device
 ```
-## :prise_électrique: Build modules and components
+##  :electric_plug: Build modules and components
 * Clear generated components and modules
 delete /home/ folder
 Remove app-routing-module.ts
