@@ -1,6 +1,12 @@
-import { GeolocalisationCoords } from './geo-coords.model';
-
 export class GeolocalisationPosition {
-    public coords: GeolocalisationCoords;
+    public coords: {
+        accuracy: number;
+        altitude: number;
+        altitudeAccuracy: number;
+        heading: number;
+        latitude: number;
+        longitude: number;
+        speed: number;
+    };
     public timestamp: number;
 }

@@ -8,6 +8,8 @@ export const openWeatherMap = {
         city: `q=`,
         units: `units=`,
         apiId: `appid=`,
+        latitude: `lat=`,
+        longitude: `lon=`,
     },
     path: `https://api.openweathermap.org/data/2.5/`
 };

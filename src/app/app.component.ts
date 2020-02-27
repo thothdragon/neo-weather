@@ -2,6 +2,7 @@ import { Component, AfterViewInit } from '@angular/core';
 import { CityService } from './shared/services/city.service';
 import { PositionService } from './shared/services/position.service';
 import { GeolocalisationPosition } from './shared/models/geolocalisation.model';
+import { Weather } from './shared/models/weather.model';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +11,16 @@ import { GeolocalisationPosition } from './shared/models/geolocalisation.model';
 })
 export class AppComponent implements AfterViewInit {
   title = 'Neo Weather';
-  events: string[] = [];
-  opened: boolean;
   geoLocalisation: GeolocalisationPosition;
   longitude: number;
   latitude: number;
+  geoLocalisationError: string;
+  weather: Weather;
+  /**
+   * Sidenav Attributs
+   */
+  events: string[] = [];
+  opened: boolean;
 
   constructor(
     private cityService: CityService,
@@ -25,15 +31,12 @@ export class AppComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.positionService.get()
       .then((succes) => {
-        console.log('Succes :)');
+        console.log('Succes Géolocalisation !');
         this.geoLocalisation = succes;
-        console.log(this.geoLocalisation);
         this.longitude = this.geoLocalisation.coords.longitude;
         this.latitude = this.geoLocalisation.coords.latitude;
-        console.log(this.latitude);
-        console.log(this.longitude);
       })
-      .catch((error) => { console.log(error); console.log('Echec :)'); });
+      .catch((error) => { this.geoLocalisationError = error.message});
   }
 
 }
