@@ -1,8 +1,9 @@
 import { Component, AfterViewInit } from '@angular/core';
-import { CityService } from './shared/services/city.service';
 import { PositionService } from './shared/services/position.service';
 import { GeolocalisationPosition } from './shared/models/geolocalisation.model';
 import { Weather } from './shared/models/weather.model';
+import { WeatherService } from './shared/services/weather.service';
+import { City } from './shared/models/city.model';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ export class AppComponent implements AfterViewInit {
   latitude: number;
   geoLocalisationError: string;
   weather: Weather;
+  cityName: string;
   /**
    * Sidenav Attributs
    */
@@ -23,8 +25,8 @@ export class AppComponent implements AfterViewInit {
   opened: boolean;
 
   constructor(
-    private cityService: CityService,
     private positionService: PositionService,
+    private weatherService: WeatherService,
   ) {
   }
 
@@ -35,8 +37,13 @@ export class AppComponent implements AfterViewInit {
         this.geoLocalisation = succes;
         this.longitude = this.geoLocalisation.coords.longitude;
         this.latitude = this.geoLocalisation.coords.latitude;
+        //this.weatherService.getWeatherByCoords(this.longitude,this.latitude);
       })
-      .catch((error) => { this.geoLocalisationError = error.message});
+      .catch((error) => { 
+        console.log('Echec de la Géolocalisation');        
+        this.geoLocalisationError = error.message;
+        this.cityName = 'Lyon';
+      });
   }
 
 }

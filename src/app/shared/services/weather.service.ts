@@ -27,6 +27,19 @@ export class WeatherService {
       .toPromise()
   }
 
+  public getWeatherByCoords(longitude: number, latitude: number): Promise<Weather> {
+    return this.http
+      .get<Weather>(
+        openWeatherMap.path 
+        + openWeatherMap.call.currentWeather
+        + openWeatherMap.parameters.apiId 
+        + openWeatherMap.token + '&' 
+        + openWeatherMap.parameters.units + 'metric&' 
+        + openWeatherMap.parameters.longitude + longitude + '&'
+        + openWeatherMap.parameters.latitude + latitude)
+      .toPromise()
+  }
+  
   public retrieveWeather(name): Promise<Weather> {
     return new Promise((resolve, reject) => {
       this.getWeatherByName(name)

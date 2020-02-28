@@ -13,17 +13,14 @@
                 <mat-icon class="material-icons"> menu </mat-icon>
             </button>
 
-            <div *ngIf="geoLocalisationError;else elseh1">
+            <div >
                 <h1>
-                    {{title}}
+                    {{cityName}}
                 </h1>
-                <p>
-                    {{geoLocalisationError}}
-                </p>
             </div>
             <ng-template #elseh1>
                 <h1>
-                    Nom d'une ville
+                    {{title}}
                 </h1>
             </ng-template>
 
@@ -42,3 +39,4 @@
     </mat-sidenav-content>
 
 </mat-sidenav-container>
+
