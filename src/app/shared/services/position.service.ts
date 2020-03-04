@@ -7,9 +7,7 @@ import { WeatherService } from './weather.service';
 })
 export class PositionService {
 
-  constructor(
-    private weatherService: WeatherService,
-  ) { }
+  constructor() { }
 
   public get(): Promise<GeolocalisationPosition> {
     return new Promise((resolve, reject) => {

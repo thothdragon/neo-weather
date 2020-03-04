@@ -8,14 +8,19 @@ import { Weather } from '../shared/models/weather.model';
   styleUrls: ['./weather.component.scss']
 })
 export class WeatherComponent implements AfterViewInit {
-  
+
+  weather: Weather;
+ 
   constructor(
     private weatherService: WeatherService
   ) { }
 
   ngAfterViewInit(): void {
     this.weatherService.retrieveWeather('Lyon')
-      .then((succes:Weather) => {succes});
+      .then((succes: Weather) => {
+        console.log(succes);
+        this.weather = succes;
+      });
   }
 
 }
