@@ -13,7 +13,7 @@
                 <mat-icon class="material-icons"> menu </mat-icon>
             </button>
 
-            <div >
+            <div *ngIf="!geoLocalisationError;else elseh1">
                 <h1>
                     {{cityName}}
                 </h1>

@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { GeolocalisationPosition } from '../models/geolocalisation.model';
+import { WeatherService } from './weather.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PositionService {
 
-  constructor() { }
+  constructor(
+    private weatherService: WeatherService,
+  ) { }
 
   public get(): Promise<GeolocalisationPosition> {
     return new Promise((resolve, reject) => {

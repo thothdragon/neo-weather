@@ -32,15 +32,14 @@ export class AppComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.positionService.get()
-      .then((succes) => {
-        console.log('Succes Géolocalisation !');
-        this.geoLocalisation = succes;
-        this.longitude = this.geoLocalisation.coords.longitude;
-        this.latitude = this.geoLocalisation.coords.latitude;
-        //this.weatherService.getWeatherByCoords(this.longitude,this.latitude);
+      .then((position) => {
+        // console.log('Succes Géolocalisation !');
+        this.weatherService.getWeatherByCoords(position.coords.longitude, position.coords.latitude)
+          .then((weather) => { this.cityName = weather.name })
+          .catch((error) => { console.log(error) });
       })
-      .catch((error) => { 
-        console.log('Echec de la Géolocalisation');        
+      .catch((error) => {
+        console.log('Echec de la Géolocalisation');
         this.geoLocalisationError = error.message;
         this.cityName = 'Lyon';
       });
