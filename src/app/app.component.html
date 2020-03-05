@@ -1,18 +1,15 @@
 <mat-sidenav-container class="weather-sidenav">
-
-    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
-        (closed)="events.push('close!')">
-        Sidenav content
+    <mat-sidenav #sidenav>
+        <h1>Cities</h1>
+        <p>Your selection of cities</p>
     </mat-sidenav>
 
     <mat-sidenav-content>
 
         <mat-toolbar>
-
             <button mat-button (click)="sidenav.toggle()">
                 <mat-icon class="material-icons"> menu </mat-icon>
             </button>
-
             <div *ngIf="!geoLocalisationError;else noCityName">
                 <h1>
                     {{cityName}}
@@ -23,7 +20,6 @@
                     {{title}}
                 </h1>
             </ng-template>
-
         </mat-toolbar>
 
         <router-outlet>
@@ -39,9 +35,7 @@
                     <app-progress></app-progress>
                 </mat-grid-tile>
             </mat-grid-list>
-
         </router-outlet>
 
     </mat-sidenav-content>
-
 </mat-sidenav-container>

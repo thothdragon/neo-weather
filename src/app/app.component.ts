@@ -4,6 +4,7 @@ import { GeolocalisationPosition } from './shared/models/geolocalisation.model';
 import { Weather } from './shared/models/weather.model';
 import { WeatherService } from './shared/services/weather.service';
 import { City } from './shared/models/city.model';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -18,11 +19,6 @@ export class AppComponent implements AfterViewInit {
   geoLocalisationError: string;
   weather: Weather;
   cityName: string;
-  /**
-   * Sidenav Attributs
-   */
-  events: string[] = [];
-  opened: boolean;
 
   constructor(
     private positionService: PositionService,
