@@ -44,18 +44,18 @@
         </div>
     </div>
     <br>
-    <mat-grid-list cols="3">
-        <mat-grid-tile rowspan="2">
+    <div fxLayout="row" fxLayoutAlign="space-between">
+        <div fxLayoutAlign="center">
             <i class="material-icons">bubble_chart</i>
             <div>{{weather.main.humidity}} %</div>
-        </mat-grid-tile>
-        <mat-grid-tile rowspan="2">
+        </div>
+        <div fxLayoutAlign="center">
             <i class="material-icons">toys</i>
             <div>{{weather.main.pressure}} hPa</div>
-        </mat-grid-tile>
-        <mat-grid-tile rowspan="2">
+        </div>
+        <div fxLayoutAlign="center">
             <i class="material-icons">swap_vert</i>
             <div>{{weather.main.temp_min}} °C - {{weather.main.temp_max}} °C</div>
-        </mat-grid-tile>
-    </mat-grid-list>
+        </div>
+    </div>
 </ng-template>
