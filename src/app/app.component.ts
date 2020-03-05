@@ -3,8 +3,6 @@ import { PositionService } from './shared/services/position.service';
 import { GeolocalisationPosition } from './shared/models/geolocalisation.model';
 import { Weather } from './shared/models/weather.model';
 import { WeatherService } from './shared/services/weather.service';
-import { City } from './shared/models/city.model';
-import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -29,13 +27,11 @@ export class AppComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.positionService.get()
       .then((position) => {
-        // console.log('Succes Géolocalisation !');
         this.weatherService.getWeatherByCoords(position.coords.longitude, position.coords.latitude)
           .then((weather) => { this.cityName = weather.name })
           .catch((error) => { console.log(error) });
       })
       .catch((error) => {
-        console.log('Echec de la Géolocalisation');
         this.geoLocalisationError = error.message;
         this.cityName = 'Lyon';
       });
