@@ -28,11 +28,17 @@
 
         <router-outlet>
             <br>
-            <app-weather></app-weather>
-
-            <app-pollution></app-pollution>
-
-            <app-progress></app-progress>
+            <mat-grid-list cols="1" rowHeight="5em">
+                <mat-grid-tile rowspan="3">
+                    <app-weather></app-weather>
+                </mat-grid-tile>
+                <mat-grid-tile rowspan="2">
+                    <app-pollution></app-pollution>
+                </mat-grid-tile>
+                <mat-grid-tile rowspan="1">
+                    <app-progress></app-progress>
+                </mat-grid-tile>
+            </mat-grid-list>
 
         </router-outlet>
 
