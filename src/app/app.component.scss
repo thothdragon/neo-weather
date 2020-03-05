@@ -1,11 +1,15 @@
-.weather-sidenav {
+:host {
+  background-color: grey;
+
+  .weather-sidenav {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
   }
-  
+
   app-weather {
     width: 50vh;
   }
+}

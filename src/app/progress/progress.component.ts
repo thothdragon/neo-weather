@@ -14,9 +14,9 @@ export class ProgressComponent implements OnInit {
   value = 50;
   bufferValue = 75;
 
-  constructor() { }
+  constructor(
+  ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }
