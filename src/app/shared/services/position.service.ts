@@ -1,19 +1,28 @@
 import { Injectable } from '@angular/core';
-import { GeolocalisationPosition } from '../models/geolocalisation.model';
 import { WeatherService } from './weather.service';
+import { Weather } from '../models/weather.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PositionService {
 
-  constructor() { }
+  constructor(
+    private weatherService: WeatherService,
+  ) { }
 
-  public get(): Promise<GeolocalisationPosition> {
+  public get(): Promise<Weather> {
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(
-        (position) => { resolve(position) },
-        (error) => { reject(error) });
+        (position: Position) => {
+          this.weatherService.getWeatherByCoords(position.coords.longitude, position.coords.latitude)
+            .then((weather: Weather) => {
+              resolve(weather)
+            })
+            .catch((error: HttpErrorResponse) => { reject(error) });
+        },
+        (error: PositionError) => { reject(error) });
     })
   }
 }

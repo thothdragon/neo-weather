@@ -10,7 +10,7 @@
             <button mat-button (click)="sidenav.toggle()">
                 <mat-icon class="material-icons"> menu </mat-icon>
             </button>
-            <div *ngIf="!geoLocalisationError;else noCityName">
+            <div *ngIf="!messageError;else noCityName">
                 <h1>
                     {{cityName}}
                 </h1>

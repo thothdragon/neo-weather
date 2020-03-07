@@ -1,6 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { WeatherService } from '../shared/services/weather.service';
 import { Weather } from '../shared/models/weather.model';
+import { PositionService } from '../shared/services/position.service';
 
 @Component({
   selector: 'app-weather',
@@ -10,17 +11,22 @@ import { Weather } from '../shared/models/weather.model';
 export class WeatherComponent implements AfterViewInit {
 
   weather: Weather;
- 
+
   constructor(
-    private weatherService: WeatherService
+    private weatherService: WeatherService,
+    private position: PositionService,
   ) { }
 
   ngAfterViewInit(): void {
-    this.weatherService.retrieveWeather('Lyon')
+
+    this.weatherService.getWeatherByName('Le Teil')
       .then((succes: Weather) => {
-        console.log(succes);
-        this.weather = succes;
+        this.weatherService.weather = succes;
+        console.log(this.weatherService.weather, 'Weather of Weather Service in Weather Component');
+        this.weather = this.weatherService.weather;
+        console.log(this.weather, 'The Weather display');
       });
+
   }
 
 }
