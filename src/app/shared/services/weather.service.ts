@@ -16,6 +16,7 @@ export class WeatherService {
   ) { }
 
   public getWeatherByName(name: string): Promise<Weather> {
+    console.log('Conso via le Name');
     return this.http
       .get<Weather>(
         openWeatherMap.path
@@ -28,7 +29,7 @@ export class WeatherService {
   }
 
   public getWeatherByCoords(longitude: number, latitude: number): Promise<Weather> {
-    console.log('API par les coordonnées');
+    console.log('Conso via les Coords');
     return this.http
       .get<Weather>(
         openWeatherMap.path

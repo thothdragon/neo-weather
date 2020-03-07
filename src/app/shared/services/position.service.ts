@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import { WeatherService } from './weather.service';
 import { Weather } from '../models/weather.model';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PositionService {
+
+  weather: Weather;
 
   constructor(
     private weatherService: WeatherService,
@@ -25,5 +27,6 @@ export class PositionService {
         (error: PositionError) => { reject(error) });
     })
   }
+
 }
 
