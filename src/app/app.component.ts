@@ -19,7 +19,7 @@ export class AppComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.positionService.get()
-      .then((weather: Weather) => {
+      .then((weather: Weather) => {        
         this.cityName = weather.name;
       })
       .catch((error) => {

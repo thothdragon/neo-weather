@@ -18,36 +18,38 @@ export class WeatherService {
   public getWeatherByName(name: string): Promise<Weather> {
     return this.http
       .get<Weather>(
-        openWeatherMap.path 
+        openWeatherMap.path
         + openWeatherMap.call.currentWeather
-        + openWeatherMap.parameters.apiId 
-        + openWeatherMap.token + '&' 
-        + openWeatherMap.parameters.units + 'metric&' 
+        + openWeatherMap.parameters.apiId
+        + openWeatherMap.token + '&'
+        + openWeatherMap.parameters.units + 'metric&'
         + openWeatherMap.parameters.city + name)
       .toPromise()
   }
 
   public getWeatherByCoords(longitude: number, latitude: number): Promise<Weather> {
+    console.log('API par les coordonnées');
     return this.http
       .get<Weather>(
-        openWeatherMap.path 
+        openWeatherMap.path
         + openWeatherMap.call.currentWeather
-        + openWeatherMap.parameters.apiId 
-        + openWeatherMap.token + '&' 
-        + openWeatherMap.parameters.units + 'metric&' 
+        + openWeatherMap.parameters.apiId
+        + openWeatherMap.token + '&'
+        + openWeatherMap.parameters.units + 'metric&'
         + openWeatherMap.parameters.longitude + longitude + '&'
         + openWeatherMap.parameters.latitude + latitude)
       .toPromise()
+
   }
-  
+
   public retrieveWeather(name): Promise<Weather> {
     return new Promise((resolve, reject) => {
       this.getWeatherByName(name)
-        .then((weather: Weather) => { 
+        .then((weather: Weather) => {
           this.weather = weather;
-          resolve(this.weather) 
+          resolve(this.weather)
         })
-        .catch((error: HttpErrorResponse) => { reject(error)})
+        .catch((error: HttpErrorResponse) => { reject(error) })
     })
   }
 }

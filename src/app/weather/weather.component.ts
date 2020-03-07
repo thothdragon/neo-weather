@@ -19,13 +19,19 @@ export class WeatherComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
 
-    this.weatherService.getWeatherByName('Le Teil')
-      .then((succes: Weather) => {
-        this.weatherService.weather = succes;
-        console.log(this.weatherService.weather, 'Weather of Weather Service in Weather Component');
-        this.weather = this.weatherService.weather;
-        console.log(this.weather, 'The Weather display');
-      });
+    this.position.get()
+      .then((weather) => {
+        this.weather = weather ;               
+      })
+      .catch((error) => { console.log(error) })
+
+    // this.weatherService.getWeatherByName('Le Teil')
+    //   .then((succes: Weather) => {
+    //     this.weatherService.weather = succes;
+    //     console.log(this.weatherService.weather, 'Weather of Weather Service in Weather Component');
+    //     this.weather = this.weatherService.weather;
+    //     console.log(this.weather, 'The Weather display');
+    //   });
 
   }
 

@@ -1,5 +1,3 @@
-import { Temperature } from './temperature.model';
-
 export class Weather {
     base: string;
     clouds: {
@@ -42,12 +40,3 @@ export class Weather {
         gust: number;
     };
 }
-
-/* Old Version of Weather Model
-
-export class Weather {
-    public description: string;
-    public humidity: number;
-    public wind: number;
-    public temperature: Temperature;
-}*/
