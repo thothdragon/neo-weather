@@ -1,1 +1,18 @@
 <p>forecast works!</p>
+
+
+<div *ngIf="forecast">
+    <p>forecast works!
+        {{timestamp}}
+        {{forecastList[0].dt}}</p>
+
+    <ul>
+        <ng-template *ngFor="let list of forecastList">
+            <li>
+                Date : {{forecastList.dt}}
+            </li>
+            <li> Voir aussi {{forecastList.main.temp}}</li>
+        </ng-template>
+    </ul>
+
+</div>
