@@ -9,7 +9,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ProgressModule } from './progress/progress.module';
 import { WeatherModule } from './weather/weather.module';
-import { PollutionModule } from './pollution/pollution.module';
 import { ForecastModule } from './forecast/forecast.module';
 
 @NgModule({
@@ -21,7 +20,6 @@ import { ForecastModule } from './forecast/forecast.module';
     BrowserAnimationsModule,
     SharedModule,
     WeatherModule,
-    PollutionModule,
     ProgressModule,
     ForecastModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
