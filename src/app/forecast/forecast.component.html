@@ -1,18 +1,42 @@
-<p>forecast works!</p>
-
-
 <div *ngIf="forecast">
-    <p>forecast works!
-        {{timestamp}}
-        {{forecastList[0].dt}}</p>
 
-    <ul>
-        <ng-template *ngFor="let list of forecastList">
-            <li>
-                Date : {{forecastList.dt}}
-            </li>
-            <li> Voir aussi {{forecastList.main.temp}}</li>
-        </ng-template>
-    </ul>
+    <div *ngFor="let forecastItem of forecastList">
+        <div fxLayout="column" fxLayoutAlign="center center">
+            <div fxLayout="row">
+                <!-- <div fxLayout="row"> -->
+                    <h1>{{forecastItem.dt * 1000 | date: 'h:mm a, dd/MM/yyyy'}}</h1>
+                <!-- </div> -->
+            </div>
+            <div fxLayout="row">
+                <i class="material-icons">filter_drama</i>
+                <div fxLayout="row">
+                    <h1>{{forecastItem.main.temp}}</h1>
+                    <h2> °C</h2>
+                </div>
+            </div>
+            <div>
+                <div>
+                    {{forecastItem.weather[0].main}} : {{forecastItem.weather[0].description}}
+                </div>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between">
+            <div fxLayoutAlign="center">
+                <i class="material-icons">bubble_chart</i>
+                <div>{{forecastItem.main.humidity}} %</div>
+            </div>
+            <mat-divider [vertical]="true"></mat-divider>
+            <div fxLayoutAlign="center">
+                <i class="material-icons">toys</i>
+                <div>{{forecastItem.wind.speed}} Km/h</div>
+            </div>
+            <mat-divider [vertical]="true"></mat-divider>
+            <div fxLayoutAlign="center">
+                <i class="material-icons">swap_vert</i>
+                <div>{{forecastItem.main.temp_min}} °C - {{forecastItem.main.temp_max}} °C</div>
+            </div>
+        </div>
+        <br>
+    </div>
 
 </div>

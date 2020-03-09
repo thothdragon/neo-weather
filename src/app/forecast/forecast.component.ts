@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../shared/services/weather.service';
 import { Forecast } from '../shared/models/forecast.model';
+import { List } from '../shared/models/list.model';
 
 @Component({
   selector: 'app-forecast',
@@ -10,8 +11,7 @@ import { Forecast } from '../shared/models/forecast.model';
 export class ForecastComponent implements OnInit {
 
   forecast: Forecast;
-  forecastList;
-  timestamp;
+  forecastList: List[];
 
   constructor(
     private weatherService: WeatherService,
@@ -22,14 +22,16 @@ export class ForecastComponent implements OnInit {
       .then((succes: Forecast) => {
         this.forecast = succes;
         console.log(this.forecast);
-        this.forecastList = succes.list
-        console.log(this.forecastList);
 
-        this.timestamp = new Date(this.forecast.list[0].dt * 1000)
+        this.forecastList = this.forecast.list;
+      console.log(this.forecastList);     
+      })
+      .catch((error) => { console.log(error) });
 
-        console.log(this.timestamp);
-        
-      });
+    // if (this.forecast) {
+    //   this.forecastList = this.forecast.list;
+    //   console.log(this.forecastList);
+    // }
   }
 
 }

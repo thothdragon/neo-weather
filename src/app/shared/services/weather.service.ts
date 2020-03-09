@@ -53,7 +53,8 @@ export class WeatherService {
         + openWeatherMap.parameters.apiId
         + openWeatherMap.token + '&'
         + openWeatherMap.parameters.units + 'metric&'
-        + openWeatherMap.parameters.city + name)
+        + openWeatherMap.parameters.city + name
+        + '&cnt=10')
       .toPromise()
   }
 
@@ -67,7 +68,8 @@ export class WeatherService {
         + openWeatherMap.token + '&'
         + openWeatherMap.parameters.units + 'metric&'
         + openWeatherMap.parameters.longitude + longitude + '&'
-        + openWeatherMap.parameters.latitude + latitude)
+        + openWeatherMap.parameters.latitude + latitude
+        + '&cnt=10')
       .toPromise()
   }
 
