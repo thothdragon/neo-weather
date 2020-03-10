@@ -32,7 +32,6 @@ export class ForecastComponent implements OnInit {
             this.weatherService.getForecastByCoords(this.longitude, this.latitude)
               .subscribe((e) => {
                 this.forecast = e;
-                console.log(e);
                 this.forecastList = this.forecast.list;
               })
           }
@@ -40,5 +39,4 @@ export class ForecastComponent implements OnInit {
       }
     );
   }
-
 }
