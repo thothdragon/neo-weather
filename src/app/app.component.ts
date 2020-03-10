@@ -1,6 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { PositionService } from './shared/services/position.service';
 import { Weather } from './shared/models/weather.model';
+import { CityService } from './shared/services/city.service';
 
 @Component({
   selector: 'app-root',
@@ -10,21 +11,26 @@ import { Weather } from './shared/models/weather.model';
 export class AppComponent implements AfterViewInit {
   title: string = 'Neo Weather';
   messageError: string;
-  cityName: string = 'Lyon';
+  cityName: string;
 
   constructor(
     private positionService: PositionService,
+    private cityService: CityService,
   ) {
   }
 
   ngAfterViewInit(): void {
-    this.positionService.get()
-      .then((weather: Weather) => {        
-        this.cityName = weather.name;
-      })
-      .catch((error) => {
-        this.messageError = error.message;
-      });
+
+    navigator.geolocation.getCurrentPosition(
+      (position: Position) => {
+        this.positionService.setLongitude(position.coords.longitude);
+        this.positionService.setLatitude(position.coords.latitude);
+      },
+      (error: PositionError) => { console.log(error) }
+    )
+
+    this.cityService.getCity().subscribe((e) => { this.cityName = e })
+
   }
 
 }

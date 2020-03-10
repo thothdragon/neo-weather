@@ -7,23 +7,23 @@ import { Subject, Observable } from 'rxjs';
 })
 export class CityService {
 
-/**
- * Pattern Observable
- */
+  /**
+   * Pattern Observable
+   */
 
   city = new Subject<string>();
-  cityObserved: Observable = this.city.asObservable();
+  // cityObserved: Observable = this.city.asObservable();
 
   constructor(
     private positionService: PositionService
   ) { }
 
   setCity(city: string) {
-    this.cityObserved.next(city);
+    this.city.next(city);
   }
 
-  getCity(): Observable {
-    return this.cityObserved;
+  getCity(): Observable<string> {
+    return this.city;
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../shared/services/weather.service';
 import { Forecast } from '../shared/models/forecast.model';
 import { List } from '../shared/models/list.model';
+import { PositionService } from '../shared/services/position.service';
 
 @Component({
   selector: 'app-forecast',
@@ -12,26 +13,32 @@ export class ForecastComponent implements OnInit {
 
   forecast: Forecast;
   forecastList: List[];
+  longitude: number;
+  latitude: number;
 
   constructor(
     private weatherService: WeatherService,
+    private positionService: PositionService,
   ) { }
 
   ngOnInit(): void {
-    this.weatherService.getForecastByName('Lyon')
-      .then((succes: Forecast) => {
-        this.forecast = succes;
-        console.log(this.forecast);
 
-        this.forecastList = this.forecast.list;
-      console.log(this.forecastList);     
-      })
-      .catch((error) => { console.log(error) });
-
-    // if (this.forecast) {
-    //   this.forecastList = this.forecast.list;
-    //   console.log(this.forecastList);
-    // }
+    this.positionService.getLongitude().subscribe(
+      (e) => {
+        this.longitude = e;
+        this.positionService.getLatitude().subscribe(
+          (e) => {
+            this.latitude = e;
+            this.weatherService.getForecastByCoords(this.longitude, this.latitude)
+              .subscribe((e) => {
+                this.forecast = e;
+                console.log(e);
+                this.forecastList = this.forecast.list;
+              })
+          }
+        );
+      }
+    );
   }
 
 }
