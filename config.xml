@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.angulartocordova.app" version="1.0.0" xmlns:android="http://schemas.android.com/apk/res/android">
-    <name>AngularToCordova</name>
-    <description>Angular to Cordova</description>
+<widget id="io.thothdragons.neoweather" version="1.0.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>Neo Weather</name>
+    <description>My Best Weather App</description>
+    <author email="thothdragons@dragons.com" href="http://thothdragons.com/">Thoth et ses Dragons</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
