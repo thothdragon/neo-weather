@@ -3,6 +3,7 @@ import { openWeatherMap } from 'src/environments/openweathermap';
 import { Weather } from '../models/weather.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Forecast } from '../models/forecast.model';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -30,7 +31,21 @@ export class WeatherService {
       .toPromise()
   }
 
-  public getWeatherByCoords(longitude: number, latitude: number): Promise<Weather> {
+  // public getWeatherByCoords(longitude: number, latitude: number): Promise<Weather> {
+  //   console.log('Conso Weather via les Coords');
+  //   return this.http
+  //     .get<Weather>(
+  //       openWeatherMap.path
+  //       + openWeatherMap.call.currentWeather
+  //       + openWeatherMap.parameters.apiId
+  //       + openWeatherMap.token + '&'
+  //       + openWeatherMap.parameters.units + 'metric&'
+  //       + openWeatherMap.parameters.longitude + longitude + '&'
+  //       + openWeatherMap.parameters.latitude + latitude)
+  //     .toPromise()
+  // }
+
+  public getWeatherByCoords(longitude: number, latitude: number): Observable<Weather> {
     console.log('Conso Weather via les Coords');
     return this.http
       .get<Weather>(
@@ -41,7 +56,6 @@ export class WeatherService {
         + openWeatherMap.parameters.units + 'metric&'
         + openWeatherMap.parameters.longitude + longitude + '&'
         + openWeatherMap.parameters.latitude + latitude)
-      .toPromise()
   }
 
   public getForecastByName(name: string): Promise<Forecast> {

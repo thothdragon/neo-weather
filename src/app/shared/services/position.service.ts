@@ -20,10 +20,11 @@ export class PositionService {
       navigator.geolocation.getCurrentPosition(
         (position: Position) => {
           this.weatherService.getWeatherByCoords(position.coords.longitude, position.coords.latitude)
-            .then((weather: Weather) => {
-              resolve(weather)
-            })
-            .catch((error: HttpErrorResponse) => { reject(error) });
+            .subscribe((e) => console.log(e))
+          // .then((weather: Weather) => {
+          //   resolve(weather)
+          // })
+          // .catch((error: HttpErrorResponse) => { reject(error) });
         },
         (error: PositionError) => { reject(error) });
     })
