@@ -31,6 +31,7 @@ export class ForecastComponent implements OnInit {
             this.latitude = e;
             this.weatherService.getForecastByCoords(this.longitude, this.latitude)
               .subscribe((e) => {
+                this.weatherService.setForecast(e);
                 this.forecast = e;
                 this.forecastList = this.forecast.list;
               })

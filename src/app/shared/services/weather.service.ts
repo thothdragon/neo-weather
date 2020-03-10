@@ -3,7 +3,7 @@ import { openWeatherMap } from 'src/environments/openweathermap';
 import { Weather } from '../models/weather.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Forecast } from '../models/forecast.model';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 
 @Injectable({
@@ -11,12 +11,28 @@ import { Observable } from 'rxjs';
 })
 export class WeatherService {
 
-  weather: Weather;
-  forecast: Forecast;
+  weather = new Subject<Weather>();
+  forecast = new Subject<Forecast>();
 
   constructor(
     private http: HttpClient,
   ) { }
+
+  setWeather(weather: Weather) {
+    this.weather.next(weather);
+  }
+
+  getWeather(): Observable<Weather> {
+    return this.weather;
+  }
+
+  setForecast(forecast: Forecast) {
+    this.forecast.next(forecast);
+  }
+
+  getForecast(): Observable<Forecast> {
+    return this.forecast;
+  }
 
   public getWeatherByName(name: string): Observable<Weather> {
     console.log('Conso Weather via le Name');

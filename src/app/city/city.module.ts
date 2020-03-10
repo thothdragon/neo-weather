@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WeatherComponent } from './weather.component';
+import { CityComponent } from './city.component';
 import { SharedModule } from '../shared/shared.module';
-import { WeatherRoutingModule } from './weather-routing.module';
+import { CityRoutingModule } from './city-routing.module';
 
 
 
 @NgModule({
   declarations: [
-    WeatherComponent,
+    CityComponent,
   ],
   imports: [
     CommonModule,
     SharedModule,
-    WeatherRoutingModule
+    CityRoutingModule,
   ],
   exports: [
-    WeatherComponent,
+    CityComponent,
   ]
 })
-export class WeatherModule { }
+export class CityModule { }

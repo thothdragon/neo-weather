@@ -1,0 +1,29 @@
+<div>
+    <h1>Cities</h1>
+    <p>Your selection of cities</p>
+    <ul>
+        <li>First City</li>
+        <li>Second City</li>
+        <li>Third City</li>
+        <li>Fourth City</li>
+        <li>Fifth City</li>
+        <li>Sixth City</li>
+        <li>Seventh City</li>
+        <li>Eighth City</li>
+        <li>Ninth City</li>
+        <li>Tenth City</li>
+    </ul>
+    <div fxLayoutAlign="space-between center">
+        <form [formGroup]="cityForm" (ngSubmit)="submitCity()">
+            <mat-form-field appearance="standard">
+                <!-- <mat-label>Enter a city</mat-label> -->
+                <input matInput formControlName="city" placeholder="Enter a city">
+            </mat-form-field>
+            <!-- <div fxLayoutAlign="end"> -->
+            <button mat-mini-fab color="primary" type="submit">
+                <mat-icon matSuffix>add</mat-icon>
+            </button>
+            <!-- </div> -->
+        </form>
+    </div>
+</div>

@@ -10,6 +10,7 @@ import { environment } from '../environments/environment';
 import { ProgressModule } from './progress/progress.module';
 import { WeatherModule } from './weather/weather.module';
 import { ForecastModule } from './forecast/forecast.module';
+import { CityModule } from './city/city.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ForecastModule } from './forecast/forecast.module';
     WeatherModule,
     ProgressModule,
     ForecastModule,
+    CityModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     // AppRoutingModule,
   ],

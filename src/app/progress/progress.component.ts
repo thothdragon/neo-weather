@@ -19,6 +19,9 @@ export class ProgressComponent implements AfterViewInit {
   value = 50;
   bufferValue = 75;
   progress: boolean = true;
+  weather: Weather;
+  forecast: Forecast;
+  cityName: string;
 
   constructor(
     private weatherService: WeatherService,
@@ -28,23 +31,28 @@ export class ProgressComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
 
-    this.positionService.getLongitude()
-      .subscribe(
-        (longitude: number) => {
-          this.positionService.getLatitude()
-            .subscribe(
-              (latitude: number) => {
-                this.weatherService.getWeatherByCoords(longitude, latitude)
-                  .subscribe((weather: Weather) => {
-                    this.weatherService.getForecastByCoords(longitude, latitude)
-                      .subscribe((forecast: Forecast) => {
-                        this.progress = false;
-                      })
-                  })
-              }
-            );
-        }
-      );
+    this.cityService.getCity()
+      .subscribe((cityName: string) => {
+        this.cityName = cityName;
+        console.log(cityName);
+
+        this.weatherService.getWeather()
+          .subscribe((weather: Weather) => {
+            this.weather = weather;
+            console.log(weather);
+
+            this.weatherService.getForecast()
+              .subscribe((forecast: Forecast) => {
+                this.forecast = forecast;
+                this.progress = false;
+                console.log(this.progress);
+              })
+          })
+      })
+
+    // if (this.cityName && (this.weather && this.forecast)) {
+    // 
+    // }
 
     //   this.cityService.getCity().subscribe(
     //     (cityName: string) => {
@@ -60,4 +68,5 @@ export class ProgressComponent implements AfterViewInit {
     //     }
     //   );
   }
+
 }

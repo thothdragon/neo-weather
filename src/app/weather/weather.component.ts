@@ -31,6 +31,7 @@ export class WeatherComponent implements AfterViewInit {
             this.latitude = e;
             this.weatherService.getWeatherByCoords(this.longitude, this.latitude)
               .subscribe((e) => {
+                this.weatherService.setWeather(e);
                 this.weather = e;
                 this.cityService.setCity(this.weather.name);
               })
